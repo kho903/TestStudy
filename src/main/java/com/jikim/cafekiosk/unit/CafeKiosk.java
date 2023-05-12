@@ -39,6 +39,9 @@ public class CafeKiosk {
 		beverages.clear();
 	}
 
+	public int calculateTotalPrice() {
+		return 0;
+	}
 	public Order createOrder() {
 
 		LocalDateTime currentDateTime = LocalDateTime.now();
