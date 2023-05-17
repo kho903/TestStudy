@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jikim.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
+import com.jikim.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import com.jikim.cafekiosk.spring.api.service.order.response.OrderResponse;
 import com.jikim.cafekiosk.spring.domain.order.Order;
 import com.jikim.cafekiosk.spring.domain.order.OrderRepository;
@@ -34,7 +35,7 @@ public class OrderService {
 	 * 재고 감소 -> 동시성 고민
 	 * optimistic lock / pessimistic lock ...
 	 */
-	public OrderResponse createOrder(OrderCreateRequest request, LocalDateTime registeredDateTime) {
+	public OrderResponse createOrder(OrderCreateServiceRequest request, LocalDateTime registeredDateTime) {
 		List<String> productNumbers = request.getProductNumbers();
 		// Product
 		List<Product> products = findProductsBy(productNumbers);

@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jikim.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
-import com.jikim.cafekiosk.spring.api.service.product.ProductResponse;
+import com.jikim.cafekiosk.spring.api.service.product.response.ProductResponse;
 import com.jikim.cafekiosk.spring.api.service.product.ProductService;
 import com.jikim.cafekiosk.spring.domain.product.ProductSellingStatus;
 import com.jikim.cafekiosk.spring.domain.product.ProductType;

@@ -1,4 +1,4 @@
-package com.jikim.cafekiosk.spring.api.service.product;
+package com.jikim.cafekiosk.spring.api.service.product.response;
 
 import com.jikim.cafekiosk.spring.domain.product.Product;
 import com.jikim.cafekiosk.spring.domain.product.ProductSellingStatus;

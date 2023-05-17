@@ -4,6 +4,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 
+import com.jikim.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
 import com.jikim.cafekiosk.spring.domain.product.Product;
 import com.jikim.cafekiosk.spring.domain.product.ProductSellingStatus;
 import com.jikim.cafekiosk.spring.domain.product.ProductType;
@@ -36,9 +37,8 @@ public class ProductCreateRequest {
 		this.price = price;
 	}
 
-	public Product toEntity(String productNumber) {
-		return Product.builder()
-			.productNumber(productNumber)
+	public ProductCreateServiceRequest toServiceRequest() {
+		return ProductCreateServiceRequest.builder()
 			.type(type)
 			.sellingStatus(sellingStatus)
 			.name(name)
