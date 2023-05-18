@@ -1,11 +1,13 @@
 package com.jikim.cafekiosk.spring.api.service.mail;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.BDDMockito.*;
 import static org.mockito.Mockito.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
@@ -22,8 +24,8 @@ class MailServiceTest {
 	// @Mock vs @Spy
 	// @Mock의 경우는 MailSendClient 내의 a, b, c 동작 X. - Stubbing이 되지 않음.
 	// @Spy의 경우는 MailSendClient 내의 a, b, c 의 경우는 실제 객체 동작.
-	// @Mock
-	@Spy
+	@Mock
+	// @Spy
 	private MailSendClient mailSendClient;
 
 	@Mock
@@ -45,11 +47,13 @@ class MailServiceTest {
 
 		// when(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
 		// 	.thenReturn(true);
+		given(mailSendClient.sendEmail(anyString(), anyString(), anyString(), anyString()))
+			.willReturn(true);
 
 		// @Spy 를 사용할 경우 when 절 X
-		doReturn(true)
-			.when(mailSendClient)
-			.sendEmail(anyString(), anyString(), anyString(), anyString());
+		// doReturn(true)
+		// 	.when(mailSendClient)
+		// 	.sendEmail(anyString(), anyString(), anyString(), anyString());
 
 		// when
 		boolean result = mailService.sendMail("", "", "", "");
