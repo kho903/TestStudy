@@ -22,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductService {
 
 	private final ProductRepository productRepository;
+	private final ProductNumberFactory productNumberFactory;
 
 	@Transactional
 	public ProductResponse createProduct(ProductCreateServiceRequest request) {
@@ -31,25 +32,13 @@ public class ProductService {
 		// 009 -> 010
 		// nextProductNumber
 
-		String nextProductNumber = createNextProductNumber();
+		String nextProductNumber = productNumberFactory.createNextProductNumber();
 
 		// Product
 		Product product = request.toEntity(nextProductNumber);
 		Product savedProduct = productRepository.save(product);
 
 		return ProductResponse.of(savedProduct);
-	}
-
-	private String createNextProductNumber() {
-		String latestProductNumber = productRepository.findLatestProductNumber();
-		if (latestProductNumber == null) {
-			return "001";
-		}
-
-		int lastedProductNumberInt = Integer.parseInt(latestProductNumber);
-		int nextProductNumberInt = lastedProductNumberInt + 1;
-
-		return String.format("%03d", nextProductNumberInt);
 	}
 
 	public List<ProductResponse> getSellingProducts() {
