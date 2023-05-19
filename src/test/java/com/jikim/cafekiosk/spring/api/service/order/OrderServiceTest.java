@@ -177,7 +177,7 @@ class OrderServiceTest {
 
 		Stock stock1 = Stock.create("001", 2);
 		Stock stock2 = Stock.create("002", 2);
-		stock1.deductQuantity(1); // todo
+		stock1.deductQuantity(1); // todo: 테스트 환경의 독립성을 보장하지 못한 코드. -> 다음과 같은 코드는 지양.
 		stockRepository.saveAll(List.of(stock1, stock2));
 
 		OrderCreateServiceRequest request = OrderCreateServiceRequest.builder()
