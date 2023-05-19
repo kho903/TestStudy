@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ class ProductServiceTest {
 	@Autowired
 	private ProductRepository productRepository;
 
-	@BeforeAll
+	/*@BeforeAll
 	static void beforeAll() {
 		// before class
 	}
@@ -47,7 +48,7 @@ class ProductServiceTest {
 		// 위 두 가지 경우에서 사용할 것.
 
 		// 결론 : 지양.
-	}
+	}*/
 
 	@AfterEach
 	void tearDown() {
