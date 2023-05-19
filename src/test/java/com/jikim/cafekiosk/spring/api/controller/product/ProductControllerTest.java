@@ -10,29 +10,15 @@ import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.web.servlet.MockMvc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jikim.cafekiosk.spring.ControllerTestSupport;
 import com.jikim.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
 import com.jikim.cafekiosk.spring.api.service.product.response.ProductResponse;
-import com.jikim.cafekiosk.spring.api.service.product.ProductService;
 import com.jikim.cafekiosk.spring.domain.product.ProductSellingStatus;
 import com.jikim.cafekiosk.spring.domain.product.ProductType;
 
-@WebMvcTest(controllers = ProductController.class)
-class ProductControllerTest {
+class ProductControllerTest extends ControllerTestSupport {
 
-	@Autowired
-	private MockMvc mockMvc;
-
-	@Autowired
-	private ObjectMapper objectMapper;
-
-	@MockBean
-	private ProductService productService;
 
 	@DisplayName("신규 상품을 등록한다.")
 	@Test

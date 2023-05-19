@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-@DataJpaTest
-class StockRepositoryTest {
+import com.jikim.cafekiosk.spring.IntegrationTestSupport;
+
+class StockRepositoryTest extends IntegrationTestSupport {
 
 	@Autowired
 	private StockRepository stockRepository;

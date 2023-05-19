@@ -7,16 +7,11 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
-import com.jikim.cafekiosk.spring.api.controller.product.dto.request.ProductCreateRequest;
+import com.jikim.cafekiosk.spring.IntegrationTestSupport;
 import com.jikim.cafekiosk.spring.api.service.product.request.ProductCreateServiceRequest;
 import com.jikim.cafekiosk.spring.api.service.product.response.ProductResponse;
 import com.jikim.cafekiosk.spring.domain.product.Product;
@@ -24,9 +19,7 @@ import com.jikim.cafekiosk.spring.domain.product.ProductRepository;
 import com.jikim.cafekiosk.spring.domain.product.ProductSellingStatus;
 import com.jikim.cafekiosk.spring.domain.product.ProductType;
 
-@ActiveProfiles("test")
-@SpringBootTest
-class ProductServiceTest {
+class ProductServiceTest extends IntegrationTestSupport {
 
 	@Autowired
 	private ProductService productService;
