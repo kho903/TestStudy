@@ -29,6 +29,11 @@ public class ProductCreateRequest {
 	@Positive(message = "상품 가격은 양수여야 합니다.")
 	private int price;
 
+	/**
+	 * 해당 빌더는 테스트에서만 사용
+	 * Q. 테스트에서만 사용하는 메서드를 프로덕션 코드에 만들어도 될까?
+	 * -> 만들어도 된다. 하지만 보수적으로 접근하자.
+	 */
 	@Builder
 	public ProductCreateRequest(ProductType type, ProductSellingStatus sellingStatus, String name, int price) {
 		this.type = type;
