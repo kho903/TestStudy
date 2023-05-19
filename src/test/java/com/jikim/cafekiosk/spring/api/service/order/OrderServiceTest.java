@@ -46,9 +46,21 @@ class OrderServiceTest {
 
 	@AfterEach
 	void tearDown() {
+		/**
+		 * deleteAllInBatch vs deleteAll
+		 * deleteAllInBatch는 delete 절이 테이블당 하나
+		 * deleteAll의 경우 select로 전체 데이터 가져온 뒤 각각 delete.
+		 * deleteAll은 단, 관련있는 테이블의 데이터도 같이 지워줌.
+		 * deleteAllInBatch 지향.
+		 */
 		orderProductRepository.deleteAllInBatch();
 		productRepository.deleteAllInBatch();
 		orderRepository.deleteAllInBatch();
+
+		// orderProductRepository.deleteAll();
+		// productRepository.deleteAll();
+		// orderRepository.deleteAll();
+
 		stockRepository.deleteAllInBatch();
 	}
 
@@ -56,6 +68,7 @@ class OrderServiceTest {
 	@Test
 	void createOrder() throws Exception {
 		// given
+		LocalDateTime registeredDateTime = LocalDateTime.now();
 		Product product1 = createProduct(HANDMADE, "001", 1000);
 		Product product2 = createProduct(HANDMADE, "002", 3000);
 		Product product3 = createProduct(HANDMADE, "003", 5000);
@@ -66,7 +79,6 @@ class OrderServiceTest {
 			.build();
 
 		// when
-		LocalDateTime registeredDateTime = LocalDateTime.now();
 		OrderResponse orderResponse = orderService.createOrder(request, registeredDateTime);
 
 		// then
